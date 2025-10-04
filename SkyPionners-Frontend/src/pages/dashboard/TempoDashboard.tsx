@@ -83,7 +83,7 @@ const TempoDashboard: React.FC = () => {
           onPlayPause={handlePlayPause}
           onReset={handleReset}
           onTimeChange={handleTimeChange}
-          // onSpeedChange={handleSpeedChange}
+          onSpeedChange={() => {}} // Placeholder function
         />
 
         {/* Informations techniques */}

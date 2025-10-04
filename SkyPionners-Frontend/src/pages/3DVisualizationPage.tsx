@@ -66,40 +66,8 @@ const Visualization3DPage: React.FC = () => {
     loadData();
   }, []);
 
-  const calculateAQI = (value: number, parameter: string): number => {
-    // Calcul simplifié de l'AQI basé sur le paramètre
-    if (parameter === 'pm25') {
-      if (value <= 12) return Math.round(value * 4.166);
-      if (value <= 35.4) return Math.round(4.166 * value - 12.5);
-      if (value <= 55.4) return Math.round(1.428 * value + 35.71);
-      return Math.round(value);
-    }
-    if (parameter === 'pm10') {
-      if (value <= 54) return Math.round(value * 1.85);
-      if (value <= 154) return Math.round(1.85 * value - 54);
-      if (value <= 254) return Math.round(0.926 * value + 77.78);
-      return Math.round(value);
-    }
-    // Valeur par défaut pour autres paramètres
-    return Math.round(value);
-  };
-
-  const getAQILevel = (aqi: number): string => {
-    if (aqi <= 50) return 'Excellent';
-    if (aqi <= 100) return 'Bon';
-    if (aqi <= 150) return 'Modéré';
-    if (aqi <= 200) return 'Dégradé';
-    if (aqi <= 300) return 'Mauvais';
-    return 'Très mauvais';
-  };
-
   const handleTempoPointSelect = (point: TempoDataPoint) => {
-    // Ajouter le timestamp manquant pour la compatibilité de type
-    const pointWithTimestamp = {
-      ...point,
-      timestamp: point.timestamp || new Date().toISOString()
-    };
-    setSelectedTempoPoint(pointWithTimestamp);
+    setSelectedTempoPoint(point);
   };
 
   if (loading) {

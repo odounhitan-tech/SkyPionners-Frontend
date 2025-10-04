@@ -3,15 +3,7 @@ import React, { useRef, useMemo } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls, Stars } from '@react-three/drei';
 import * as THREE from 'three';
-
-interface TempoDataPoint {
-  latitude: number;
-  longitude: number;
-  no2: number;
-  o3: number;
-  aod: number;
-  confidence: number;
-}
+import type { TempoDataPoint } from '../../services/nasaTempo';
 
 interface TempoVisualization3DProps {
   data: TempoDataPoint[];
